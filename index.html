@@ -2,7 +2,6 @@
 <html lang="en-us">
     <head>
             <meta charset="UTF-8">
-            <!-- yeah i tried linking this and it wouldn't link or work or anything lol -->
             <!-- <script type="text/javascript" src="fancy.js"></script> -->
             <link rel="stylesheet" type="text/css" href="style.css" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,9 +24,7 @@
             <h6>JK This Shit is Broken...</h6>
         </div>
     <script>
-//dont let it start before page
-//$(document).ready(function(){
-    //mah variables
+
         var arrWords = ["happy","sad","emotions","scope","example","piece"];
         var random = arrWords[Math.floor(Math.random() * arrWords.length)];
         
@@ -36,32 +33,6 @@
         var lives = 5;
         var answers = [];
         var s;
-        
-console.log(arrWords);
-console.log(random);
-console.log(arrLetters);
-console.log(lives);
-console.log(answers);
-console.log(s);
-//makin some buttons
-        for(var i = 0; i < arrLetters.length; i++) {
-            var something= $('<input/>').attr({ 
-                type: 'button',  
-                id: "btn" + arrLetters[i],
-                value: arrLetters[i]});
-            something.attr("data-letter", arrLetters[i]);
-            something.addClass("guessB");
-            $("#buttons").append(something);
-            //console.log(something);           
-        };
-console.log(arrWords);
-console.log(random);
-console.log(arrLetters.length);
-
-
-// this doesn't fill with _ and I dont know why lol. everything beyond this point is broken because of it. also random was defined until i wrote more code for points
-// so it broke only after it determined a word it would console log that answers was defined as an empty array.
-//jk lol it was the ready function.
 
         function begin(){
             for (var i = 0; i < random.length; i++){
@@ -71,37 +42,39 @@ console.log(arrLetters.length);
             document.getElementById("dahWord").innerHTML = s;
             $("#lives").innerHTML = lives;
             $("#numLetters").innerHTML = answers.length;
+                for(var i = 0; i < arrLetters.length; i++) {
+                var something= $('<input/>').attr({ 
+                    type: 'button',  
+                    id: "btn" + arrLetters[i],
+                    value: arrLetters[i]});
+                something.attr("data-letter", arrLetters[i]);
+                something.addClass("guessB");
+                $("#buttons").append(something);          
+            }
         }
         begin();
-        console.log(lives);
-        console.log(random.length);
-        console.log(s);
-        function myFunction() {
-                        document.getElementById("btn" + this.value).disabled = true;
-                    }
-//click a button and compare if it works fill in letters if it dont -- dont and lose lives
+
         $("body").on("click", ".guessB", function(){
-            console.log(this.value)
             for (var i = 0; i < answers.length; i++){
                 if (random[i] === this.value){
                     answers[i] = this.value;
                     s = answers.join(" ");
-                    document.getElementById("dahWord").innerHTML = s;
-                    document.getElementById("btn" + this.value).onclick = function() {myFunction()};   
+                    document.getElementById("dahWord").innerHTML = s; 
                 }
                 else{
                     var a;
                     lives -=1;
                     a = lives.toString();
                     $("lives").innerHTML = a;
+                    // if (lives == 0){
+                    //     alert("you lose");
+                    // }
                 }
             }
+            document.getElementById("btn" + this.value).classList.remove("guessB");
+            document.getElementById("btn" + this.value).classList.add("hidden");
         });
-
-//win/lose conditions
-        if (lives == 0){
-            alert("you lose");
-        }
+        
         if(arrWords.length < 1 || arrWords == undefined){
             alert("you win");
     }

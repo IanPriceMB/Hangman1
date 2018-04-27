@@ -22,6 +22,15 @@ body{
     color: black;
     text-align: center;
 }
+.hidden{
+    visibility: hidden;
+    width: 8%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
 #lives, #numLetters{
     font-size: 30px;
     color: blue;
