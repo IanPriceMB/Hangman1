@@ -76,7 +76,9 @@ console.log(arrLetters.length);
         console.log(lives);
         console.log(random.length);
         console.log(s);
-
+        function myFunction() {
+                        document.getElementById("btn" + this.value).disabled = true;
+                    }
 //click a button and compare if it works fill in letters if it dont -- dont and lose lives
         $("body").on("click", ".guessB", function(){
             console.log(this.value)
@@ -85,12 +87,13 @@ console.log(arrLetters.length);
                     answers[i] = this.value;
                     s = answers.join(" ");
                     document.getElementById("dahWord").innerHTML = s;
+                    document.getElementById("btn" + this.value).onclick = function() {myFunction()};   
                 }
                 else{
                     var a;
                     lives -=1;
                     a = lives.toString();
-                    document.getElementById("lives").innerHTML = a;
+                    $("lives").innerHTML = a;
                 }
             }
         });
