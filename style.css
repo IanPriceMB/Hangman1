@@ -1,17 +1,17 @@
 body{
-    background-color: rgb(39, 37, 37);
+    background-color: black;
 }
 #container{
     width: 50%;
     border-radius: 5px;
     padding: 10px;
-    background-color: black;
     margin: 10% auto;
     text-align: center;
     color: red;
     border: red;
     border-style: groove;
     font-size: 20px;
+    background-color: rgb(39, 37, 37);
 }
 
 .guessB{
