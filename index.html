@@ -28,7 +28,7 @@
 //dont let it start before page
 //$(document).ready(function(){
     //mah variables
-        var arrWords = [["happy"],["sad"],["emotions"],["scope"],["example"],["piece"]];
+        var arrWords = ["happy","sad","emotions","scope","example","piece"];
         var random = arrWords[Math.floor(Math.random() * arrWords.length)];
         
         var arrLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
@@ -36,47 +36,57 @@
         var lives = 5;
         var answers = [];
         var s;
-
+console.log(arrWords);
+console.log(random);
+console.log(arrLetters);
+console.log(lives);
+console.log(answers);
+console.log(s);
 //makin some buttons
         for(var i = 0; i < arrLetters.length; i++) {
             var something= $('<input/>').attr({ 
                 type: 'button',  
                 id: "btn" + arrLetters[i],
-                class: 'guessB', 
                 value: arrLetters[i]});
             something.attr("data-letter", arrLetters[i]);
+            something.addClass("guessB");
             $("#buttons").append(something);
+            console.log(something);           
         };
+console.log(arrWords);
+console.log(random);
+console.log(arrLetters.length);
+
 
 // this doesn't fill with _ and I dont know why lol. everything beyond this point is broken because of it. also random was defined until i wrote more code for points
 // so it broke only after it determined a word it would console log that answers was defined as an empty array.
 //jk lol it was the ready function.
         
-    function begin(){
+        var s;
+
+        function begin(){
             for (var i = 0; i < random.length; i++){
-                answers[i] = "_";
+            answers.push("_");
             }
-            s = answers.join("");s
+            s = answers.join(" ");
             document.getElementById("dahWord").innerHTML = s;
+            $("#lives").innerHTML = lives;
+            $("#numLetters").innerHTML = random.length;
         }
+        begin();
 
 //click a button and compare if it works fill in letters if it dont -- dont and lose lives
         $("body").on("click", ".guessB", function(){
             for (var i = 0; i < random.length; i++){
-                if (random[i] === "data-letter"){
-                    answers[i] = "data-letter";
-                    document.getElementById("btn" + arrLetters[i]).disabled = true;
+                if (random[i] === arrLetters[i].value){
+                    answers[i] = arrLetters[i].value;
                 }
                 else{
                     lives --;
-                    document.getElementById("btn" + arrLetters[i]).disabled = true;
+                    $("#lives").innerHTML = lives;
                 }
             }
         });
-
-//dynamic update of spans cause it's cool
-        $("#lives").innerHTML = lives;
-        $("#numLetters").innerHTML = random;
 
 //win/lose conditions
         if (lives == 0){
