@@ -17,7 +17,7 @@
                     <br>
                     There are <strong></strong><span id="numLetters">0</span></strong> letters in this word.
                 </p>
-                <h2 id="dahWord"></h1>
+                <h2 id="dahWord"></h2>
             </div>
             <div id="buttons">
 
@@ -34,8 +34,8 @@ $(document).ready(function(){
         var arrLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
         var lives = 5;
-        var count = 0;
         var answers = [];
+        var s;
 
 //makin some buttons
         for(var i = 0; i < arrLetters.length; i++) {
@@ -48,39 +48,42 @@ $(document).ready(function(){
             $("#buttons").append(something);
         };
 
-// this doesn't fill with _ and I dont know why lol. everything beyond this point is broken because of it.
-        function begin(){
-            for (var i =0; i < random.length; i++){
+// this doesn't fill with _ and I dont know why lol. everything beyond this point is broken because of it. also random was defined until i wrote more code for points
+// so it broke only after it determined a word it would console log that answers was defined as an empty array.
+        
+    function begin(){
+            for (var i = 0; i < random.length; i++){
                 answers[i] = "_";
             }
-            s = answers.join(" ");
+            s = answers.join("");s
             document.getElementById("dahWord").innerHTML = s;
         };
-
-//dynamic update of spans cause it's cool
-        $("#lives").innerHTML = lives;
-        $("#numLetters").innerHTML = random;
 
 //click a button and compare if it works fill in letters if it dont -- dont and lose lives
         $("body").on("click", ".guessB", function(){
             for (var i = 0; i < random.length; i++){
                 if (random[i] === "data-letter"){
                     answers[i] = "data-letter";
-                    document.getElementById("btn" + arrLetters [i]).disabled = true;
+                    document.getElementById("btn" + arrLetters[i]).disabled = true;
                 }
                 else{
                     lives --;
-                    document.getElementById("btn" + arrLetters [i]).disabled = true;
+                    document.getElementById("btn" + arrLetters[i]).disabled = true;
                 }
             }
         });
+
+//dynamic update of spans cause it's cool
+        $("#lives").innerHTML = lives;
+        $("#numLetters").innerHTML = random;
+
 //win/lose conditions
         if (lives == 0){
             alert("you lose");
         }
-        if (arrWords == 0){
+        if(arrWords.length < 1 || arrWords == undefined){
             alert("you win");
-        }
+    }
 });
     </script>
     </body>
