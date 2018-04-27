@@ -26,7 +26,7 @@
         </div>
     <script>
 //dont let it start before page
-$(document).ready(function(){
+//$(document).ready(function(){
     //mah variables
         var arrWords = [["happy"],["sad"],["emotions"],["scope"],["example"],["piece"]];
         var random = arrWords[Math.floor(Math.random() * arrWords.length)];
@@ -50,6 +50,7 @@ $(document).ready(function(){
 
 // this doesn't fill with _ and I dont know why lol. everything beyond this point is broken because of it. also random was defined until i wrote more code for points
 // so it broke only after it determined a word it would console log that answers was defined as an empty array.
+//jk lol it was the ready function.
         
     function begin(){
             for (var i = 0; i < random.length; i++){
@@ -57,7 +58,7 @@ $(document).ready(function(){
             }
             s = answers.join("");s
             document.getElementById("dahWord").innerHTML = s;
-        };
+        }
 
 //click a button and compare if it works fill in letters if it dont -- dont and lose lives
         $("body").on("click", ".guessB", function(){
@@ -84,7 +85,7 @@ $(document).ready(function(){
         if(arrWords.length < 1 || arrWords == undefined){
             alert("you win");
     }
-});
+//});
     </script>
     </body>
 </html>
