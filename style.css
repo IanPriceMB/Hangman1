@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(39, 37, 37);
+}
+#container{
+    width: 50%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: black;
+    margin: 10% auto;
+    text-align: center;
+    color: red;
+    border: red;
+    border-style: groove;
+    font-size: 20px;
+}
+
+.guessB{
+    width: 8%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+#lives, #numLetters{
+    font-size: 30px;
+    color: blue;
+}

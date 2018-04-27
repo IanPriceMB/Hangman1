@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+            <meta charset="UTF-8">
+            <!-- yeah i tried linking this and it wouldn't link or work or anything lol -->
+            <!-- <script type="text/javascript" src="fancy.js"></script> -->
+            <link rel="stylesheet" type="text/css" href="style.css" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <title>Hangman Game</title>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Let's Play Some Hangman!</h1>
+            <div id="header">
+                <p>
+                    You have <strong><span id="lives">5</span></strong> lives left.
+                    <br>
+                    There are <strong></strong><span id="numLetters">0</span></strong> letters in this word.
+                </p>
+                <h2 id="dahWord"></h1>
+            </div>
+            <div id="buttons">
+
+            </div>
+            <h6>JK This Shit is Broken...</h6>
+        </div>
+    <script>
+//dont let it start before page
+$(document).ready(function(){
+    //mah variables
+        var arrWords = [["happy"],["sad"],["emotions"],["scope"],["example"],["piece"]];
+        var random = arrWords[Math.floor(Math.random() * arrWords.length)];
+        
+        var arrLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+        var lives = 5;
+        var count = 0;
+        var answers = [];
+
+//makin some buttons
+        for(var i = 0; i < arrLetters.length; i++) {
+            var something= $('<input/>').attr({ 
+                type: 'button',  
+                id: "btn" + arrLetters[i],
+                class: 'guessB', 
+                value: arrLetters[i]});
+            something.attr("data-letter", arrLetters[i]);
+            $("#buttons").append(something);
+        };
+
+// this doesn't fill with _ and I dont know why lol. everything beyond this point is broken because of it.
+        function begin(){
+            for (var i =0; i < random.length; i++){
+                answers[i] = "_";
+            }
+            s = answers.join(" ");
+            document.getElementById("dahWord").innerHTML = s;
+        };
+
+//dynamic update of spans cause it's cool
+        $("#lives").innerHTML = lives;
+        $("#numLetters").innerHTML = random;
+
+//click a button and compare if it works fill in letters if it dont -- dont and lose lives
+        $("body").on("click", ".guessB", function(){
+            for (var i = 0; i < random.length; i++){
+                if (random[i] === "data-letter"){
+                    answers[i] = "data-letter";
+                    document.getElementById("btn" + arrLetters [i]).disabled = true;
+                }
+                else{
+                    lives --;
+                    document.getElementById("btn" + arrLetters [i]).disabled = true;
+                }
+            }
+        });
+//win/lose conditions
+        if (lives == 0){
+            alert("you lose");
+        }
+        if (arrWords == 0){
+            alert("you win");
+        }
+});
+    </script>
+    </body>
+</html>
