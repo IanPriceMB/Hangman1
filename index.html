@@ -2,90 +2,25 @@
 <html lang="en-us">
     <head>
             <meta charset="UTF-8">
-            <!-- <script type="text/javascript" src="fancy.js"></script> -->
             <link rel="stylesheet" type="text/css" href="style.css" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript" src="./fancy.js"></script>
             <title>Hangman Game</title>
     </head>
     <body>
         <div id="container">
-            <h1>Let's Play Some Hardcore Hangman!</h1>
-            <p>
-                You'll lose extra lives depending on how poor your guess is!
-            </p>
+            <h1>Let's Play Some Hangman!</h1>
             <div id="header">
                 <p>
-                    You have <strong><span id="lives">50</span></strong> lives left.
+                    You have <strong><span id="lives">5</span></strong> lives left.
                     <br>
                     There are <strong></strong><span id="numLetters">0</span></strong> letters in this word.
                 </p>
                 <h2 id="dahWord"></h2>
             </div>
             <div id="buttons">
-
+                <!-- buttons go here -->
             </div>
-            <h6>JK This Shit is Broken...</h6>
         </div>
-    <script>
- $(document).ready(function() {
-        var arrWords = ["happy","sad","emotions","scope","example","piece"];
-        var random = arrWords[Math.floor(Math.random() * arrWords.length)];
-        
-        var arrLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-        var lives = 50;
-        var answers = [];
-        var s;
-
-        function begin(){
-            for (var i = 0; i < random.length; i++){
-                answers.push("_");
-            }
-            s = answers.join(" ");
-            document.getElementById("dahWord").innerHTML = s;
-
-            for(var i = 0; i < arrLetters.length; i++) {
-                var something= $('<input/>').attr({ 
-                    type: 'button',  
-                    id: "btn" + arrLetters[i],
-                    value: arrLetters[i]});
-                    something.attr("data-letter", arrLetters[i]);
-                    something.addClass("guessB");
-                    $("#buttons").append(something);        
-            }
-            var a = random.length.toString();
-            document.getElementById("numLetters").innerHTML = a;
-            lives = 50;
-            var l = lives.toString();
-            document.getElementById("lives").innerHTML = l;  
-        }
-        begin();
-
-        $("body").on("click", ".guessB", function(){
-            for (var i = 0; i < answers.length; i++){    
-                if (random[i] === this.value){
-                    answers[i] = this.value;
-                    s = answers.join(" ");
-                    document.getElementById("dahWord").innerHTML = s;
-                }
-            else{
-                var a;
-                lives -=1;
-                a = lives.toString();
-                document.getElementById("lives").innerHTML = a;
-                if (lives == 0){
-                    alert("you lose");
-                }
-            }  
-        }
-            document.getElementById("btn" + this.value).classList.remove("guessB");
-            document.getElementById("btn" + this.value).classList.add("hidden");
-        });
-        
-        if (arrWords == 0) {
-            alert("you win");
-        }
-    });
-    </script>
     </body>
 </html>
