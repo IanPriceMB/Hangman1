@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-            <meta charset="UTF-8">
-            <link rel="stylesheet" type="text/css" href="style.css" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script type="text/javascript" src="./fancy.js"></script>
-            <title>Hangman Game</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="./fancy.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel='stylesheet' href="style.css">
+        <title>Hangman Game</title>
     </head>
     <body>
-        <div id="container">
-            <h1>Let's Play Some Hangman!</h1>
-            <div id="header">
-                <p>
+        <div class='container'>
+            <div class='row'>
+                <h1 class='col-12'>Let's Play Some Hangman!</h1>
+            </div>
+            <div class='row' id="header">
+                <p class='col-lg-6 col-md-12'>
                     You have <strong><span id="lives">5</span></strong> lives left.
-                    <br>
+                </p>
+                <p class='col-lg-6 col-md-12'>
                     There are <strong></strong><span id="numLetters">0</span></strong> letters in this word.
                 </p>
-                <h2 id="dahWord"></h2>
             </div>
-            <div id="buttons">
-                <!-- buttons go here -->
+            <div class="row">
+                <h2 class='col-lg-12' id="dahWord"></h2>
+            </div>
+            <br/>
+            <div class=row>
+                <div class="col-lg-2 col-md-0">
+                    <!-- used to offset buttons -->
+                </div>
+                <div class="col-lg-8 col-md-12" id="buttons">
+                    <!-- buttons go here -->
+                </div>
+                <div class="col-lg-2 col-md-0">
+                    <!-- used to offset buttons -->
+                </div>
             </div>
         </div>
     </body>
